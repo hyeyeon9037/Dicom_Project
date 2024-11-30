@@ -103,7 +103,7 @@
 
 <br>
 
-<h3><img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Bell.png" alt="Bell" width="25" height="25" /><b>개발 이슈</b></h3>
+<h3><img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Bell.png" alt="Bell" width="25" height="25" /><b> 개발 이슈</b></h3>
 
 
 <li><b>이전/다음 월 변경 시 유효하지 않은 값 처리</b></li>
