@@ -21,12 +21,21 @@
   <li>사용자 접근성을 최우선으로 고려한 의료 정보 통합 플랫폼 구현</li>
   <li>의료 정보를 한눈에 확인할 수 있는 직관적인 통합 정보 시스템 제공</li>
   <li>의료 협업과 연구를 촉진하는 원활한 커뮤니케이션 및 파일 공유 기능 추가</li>
-</ul>
 
-<br><br>
+<br>
+
+ <details>
+<summary>
+  <h3> 4. Erd </h3>
+</summary>
+<img width="862" alt="image" src="https://github.com/user-attachments/assets/236b9a24-aecb-41a4-852a-2f549b67e9ac">
+</details>
 
 
-<ul>
+<br>
+
+
+
 <h2>회원가입 & 로그인</h2>
 
 <img src="https://github.com/user-attachments/assets/408a3e8f-1313-4fe7-a5ba-51a841f595a9">
@@ -84,7 +93,6 @@
 <br>
 
 📅 <b> 날짜 범위 선택</b>
-<br> : 날짜 선택 및 범위 설정은 라이브러리 없이 순수 JavaScript와 DOM API로 구현<br>
 <li>날짜를 클릭하면 시작일과 종료일을 설정</li>
 <li>전체, 1일, 3일, 1주일 버튼을 눌러 날짜 범위를 간편하게 설정 가능</li>
 <li>highlightSelectedRange 함수를 이용해 선택된 날짜 범위를 시각적으로 표시</li>
@@ -168,7 +176,7 @@ document.getElementById("next-month").addEventListener("click", () => {
 
 <br><br>
 
-<h3><img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Bell.png" alt="Bell" width="25" height="25" /><b>개발 이슈</b></h3>
+<h3><img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Bell.png" alt="Bell" width="25" height="25" /><b> 개발 이슈</b></h3>
 
 <li> <b>데이터 로드 실패</b></li>
 
@@ -252,6 +260,61 @@ function saveKeyReport() {
 
 🔎 데이터 저장 시 유효성 검사
 <br> : 저장 요청 전에 필수 값(studyKey, seriesKey)의 유효성을 확인과 저장 요청 결과에 따라 사용자에게 성공 또는 실패 메시지 제공하여 오류 해결
+
+
+<br><br>
+
+
+<h2> <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Beating%20Heart.png" alt="Beating Heart" width="25" height="25" /> HealSCope의 장점&단점은? </h2>
+
+장점
+<br>
+<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand%20gestures/Heart%20Hands%20Medium-Light%20Skin%20Tone.png" alt="Heart Hands Medium-Light Skin Tone" width="25" height="25" /> <b>접근성</b>
+ <br>
+웹 기반 서비스로 언제 어디서나 의료 데이터를 쉽게 확인 가능합니다.
+
+<br>
+
+<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand%20gestures/Heart%20Hands%20Medium-Light%20Skin%20Tone.png" alt="Heart Hands Medium-Light Skin Tone" width="25" height="25" /> <b>의료진 간의 협업 강화</b>
+ <br>
+의료 데이터 공유와 통합 검색 기능을 통해 효율적인 협업 환경을 제공합니다.
+
+<br>
+
+<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand%20gestures/Heart%20Hands%20Medium-Light%20Skin%20Tone.png" alt="Heart Hands Medium-Light Skin Tone" width="25" height="25" /> <b>고품질 데이터 관리</b>
+ <br>
+DICOM 파일 기반 이미지 처리 및 다운로드 기능으로 정확한 진단과 데이터를 보장합니다.
+
+
+<br>
+
+단점
+<br>
+<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand%20gestures/Rightwards%20Pushing%20Hand%20Light%20Skin%20Tone.png" alt="Rightwards Pushing Hand Light Skin Tone" width="25" height="25" /> <b>의료 데이터 처리 시 법적 문제</b>
+
+<li>민감한 의료 데이터를 다루기 때문에 개인정보 보호법의 규정을 철저히 준수해야합니다.</li>
+<li>시스템의 보안성과 데이터 암호화가 충분히 구현되지 않으면 법적 문제가 발생할 수 있습니다.</li>
+
+<br>
+<br>
+
+<h2> <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Travel%20and%20places/Construction.png" alt="Construction" width="25" height="25" /> 보완할 점 </h2>
+<li>이미지 로드 최적화</li>
+<ul><li>대량 이미지 로드 시 더 빠른 반응 속도를 위해 Lazy Loading 및 이미지 캐싱 기능을 적용</li></ul>
+<br>
+  
+<li>리포트 공유 및 출력 기능</li>
+<ul>
+    <li>리포트 내용을 PDF로 저장하거나 이메일 등을 통해 공유할 수 있는 기능 추가</li>
+    <li>PDF 생성 라이브러리(e.g., jsPDF)를 사용하여 출력 기능을 구현</li>
+</ul>
+
+
+</ul>
+
+
+
+
  
 
 
