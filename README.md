@@ -98,19 +98,50 @@
 <h3><img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Bell.png" alt="Bell" width="25" height="25" /><b>개발 이슈</b></h3>
 
 
-<b>이전/다음 월 변경 시 유효하지 않은 값 처리</b>
+<li><b>이전/다음 월 변경 시 유효하지 않은 값 처리</b></li>
+: 캘린더 데이터 생성/렌더링의 일반적인 과정
+
 <br>
-🔎 currentMonth 값의 범위를 명확히 제어하는 제어문을 추가해 오류 해결
+<br>
+
+<li><b>월 데이터 로드</b></li>
+: 월 이동 시 발생할 수 있는 오류를 방지하는 사전 작업
+<br>
 
 <br>
 
-<b>월 데이터 로드</b>
-<br>
-🔎 currentMonth 값의 범위를 명확히 제어하는 제어문을 추가하여 오류를 해결
+```javascript
+// 이전 달 이동
+document.getElementById("prev-month").addEventListener("click", () => {
+    currentMonth--; // 월 감소
+    if (currentMonth < 0) { 
+        currentMonth = 11; // 12월로 설정
+        currentYear--;     // 연도 감소
+    }
+    renderCalendar(currentMonth, currentYear); // 변경된 값으로 달력 렌더링
+});
+
+// 다음 달 이동
+document.getElementById("next-month").addEventListener("click", () => {
+    currentMonth++; // 월 증가
+    if (currentMonth > 11) { 
+        currentMonth = 0;  // 1월로 설정
+        currentYear++;     // 연도 증가
+    }
+    renderCalendar(currentMonth, currentYear); // 변경된 값으로 달력 렌더링
+});
+```
+
+🔎 currentMonth 값의 범위를 명확히 제어하는 로직을 추가하여 월 이동 시 발생할 수 있는 유효하지 않은 값 문제를 해결 <br>
+🔎 currentMonth 값의 범위를 명확히 제어하는 로직 추가를 통해 이전/다음 월 이동 시 유효하지 않은 값 발생 문제를 방지
+
 
 
 
   <br><br>
+
+
+  
   
 <h2>리포트</h2>
 
@@ -134,5 +165,94 @@
 
 🎫 <b> 검사 키 기반 데이터 관리</b>
 <li>studyKey 및 seriesKey를 통해 데이터를 개별적으로 관리하여 유연한 API 요청 구현 </li>
+
+<br><br>
+
+<h3><img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Bell.png" alt="Bell" width="25" height="25" /><b>개발 이슈</b></h3>
+
+<li> <b>데이터 로드 실패</b></li>
+
+<br>
+ 
+```javascript
+(() => {
+     // studyKey와 seriesKey를 URL에서 추출하여 리포트를 가져오기
+    const param = new URLSearchParams(window.location.search);
+    const studyKey = param.get("studyKey");
+    const seriesKey = param.get("seriesKey");
+   
+    // 리포트 로드
+    axios.get(`/api/report/${studyKey}/${seriesKey}`)
+        .then((response) => {
+            const report = response.data;
+            if (report) {
+                // 데이터가 있으면 필드에 채우기
+                document.getElementById("comment").value = report.reComment || "";
+                document.getElementById("exploration").value = report.reExploration || "";
+                document.getElementById("conclusion").value = report.reConclusion || "";
+                document.getElementById("recommendation").value = report.reRecommendation || "";
+            } else {
+                // 데이터가 없으면 초기화
+                document.getElementById("comment").value = "";
+                document.getElementById("exploration").value = "";
+                document.getElementById("conclusion").value = "";
+                document.getElementById("recommendation").value = "";
+            }
+        })
+        .catch((error) => {
+            console.error("리포트 로드 오류:", error);
+        });
+})();
+```
+
+🔎 데이터로드 시 예외 처리 추가
+<br> : 데이터를 로드하지 못했을 경우, 폼 필드를 초기화하여 오류 발생을 방지함
+
+<br>
+
+<li> <b>데이터 저장 실패 </b></li>
+
+<br>
+
+```javascript
+function saveKeyReport() {
+    const comment = document.getElementById("comment").value;
+    const exploration = document.getElementById("exploration").value;
+    const conclusion = document.getElementById("conclusion").value;
+    const recommendation = document.getElementById("recommendation").value;
+
+    const param = new URLSearchParams(window.location.search);
+    const studyKey = param.get("studyKey");
+    const seriesKey = param.get("seriesKey");
+
+    // 리포트 저장
+    axios.post('/api/saveReport', {
+        studyKey: studyKey,
+        seriesKey: seriesKey,
+        reComment: comment,
+        reExploration: exploration,
+        reConclusion: conclusion,
+        reRecommendation: recommendation
+    })
+        .then((response) => {
+            if (response.status === 200) {
+                alert("저장되었습니다.");
+            } else {
+                alert("저장에 실패했습니다.");
+            }
+        })
+        .catch((error) => {
+            console.error("오류 발생:", error);
+            alert("저장 중 오류가 발생했습니다.");
+        });
+}
+```
+
+<br>
+
+🔎 데이터 저장 시 유효성 검사
+<br> : 저장 요청 전에 필수 값(studyKey, seriesKey)의 유효성을 확인과 저장 요청 결과에 따라 사용자에게 성공 또는 실패 메시지 제공하여 오류 해결
+ 
+
 
 </ul>
