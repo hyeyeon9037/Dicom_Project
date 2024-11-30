@@ -1,7 +1,12 @@
+
 let magnifyEnabled = false;  // 이미지 이동(드래그) 기능이 활성화되었는지 여부
 
+
 function enableMagnify() {
-	const dicomElement = document.getElementById('dicomViewer');
+
+//이미지 넣을곳을 가
+const dicomElement = document.getElementById('dicomViewer');
+
 	deactivateAllTools(dicomElement);
 	magnifyEnabled = !magnifyEnabled;
 	

@@ -133,6 +133,14 @@
             const studyKey = param.get("studyKey");
             const seriesKey = param.get("seriesKey");
 
+            /*
+            유효성 검사 코드
+            if (!studyKey || !seriesKey) {
+ 		       alert("유효하지 않은 studyKey 또는 seriesKey입니다.");
+  		       return;
+   			 }
+ 			*/
+            
             axios.post('/api/saveReport', {
                 studyKey: studyKey,
                 seriesKey: seriesKey,

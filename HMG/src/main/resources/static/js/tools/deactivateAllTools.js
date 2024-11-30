@@ -22,7 +22,7 @@ function deactivateAllTools(dicomElement) {
 	cornerstoneTools.setToolDisabledForElement(dicomElement, 'Wwwc');
 	
 }
-
+// 시리즈비교를 누르면 위에나오는 툴 
 function multiDeactivateAllTools(element) {
 	// 모든 버튼에서 'active' 클래스를 제거하여 초기화
 	const buttons = document.querySelectorAll('.tools-container-ul .btn');
